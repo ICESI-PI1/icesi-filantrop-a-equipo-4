@@ -6,6 +6,7 @@ from ..models import Report
 from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
 
 @login_required
 def getInfo(request):
@@ -26,7 +27,6 @@ def agreement(request, sponsor_id):
     if request.method == "POST" and request.FILES.get("uploadedFile"):
         uploaded_file = request.FILES["uploadedFile"]
 
-        # Eliminar el reporte anterior del sistema de archivos
         if latest_report:
             report_path = os.path.join(settings.FILES_ROOT, str(latest_report.uploadedFile))
             os.remove(report_path)
@@ -44,14 +44,16 @@ def agreement(request, sponsor_id):
         with open(report_path, 'wb+') as destination:
             for chunk in uploaded_file.chunks():
                 destination.write(chunk)
+        
+        return redirect('agreement', sponsor_id=sponsor_id)
 
-    # Configurar las cabeceras de caché para evitar almacenamiento en caché
     response = render(request, 'agreement.html', {"sponsors": sponsors, "selected_sponsor": selected_sponsor, "file": latest_report})
     response['Cache-Control'] = 'no-cache, no-store, must-revalidate'
     response['Pragma'] = 'no-cache'
     response['Expires'] = '0'
 
     return response
+
     
 def get(self, request, pdf_filename):
         pdf_path = os.path.join(settings.BASE_DIR, 'agreements_pdf', pdf_filename)

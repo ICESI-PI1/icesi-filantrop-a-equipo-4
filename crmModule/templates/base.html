@@ -12,7 +12,7 @@
 </head>
 <body> 
 
-    <div class="container-fluid blue-background">
+    <div class="container-fluid blue-background style="min-height: 100hv"">
         <div class="row">
             <div class="col-md-12 ">
                 <img src="{% static 'logofilan.png' %}" alt="Imagen de encabezado" class="img-fluid" width="15%">
@@ -37,10 +37,12 @@
                 </ul>
             </div>
         </div>
+        
+   
     </div>
-
-
     {% block content %}
     {% endblock %}
+    
 </body>
+
 </html>

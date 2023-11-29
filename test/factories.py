@@ -11,7 +11,7 @@ class sponsorFactory(factory.Factory):
     personType = "J"
     contact_number="315471353"
     email = "Carv@gmail.com"
-    previousColab = "True"
+    previousColab = "si"
 
 class sponsor2Factory(factory.Factory):
     class Meta:
@@ -21,7 +21,7 @@ class sponsor2Factory(factory.Factory):
     personType = "J"
     contact_number="3216852423"
     email = "ManuelIng@gmail.com"
-    previousColab = "True"
+    previousColab = "si"
 
 class sponsor3Factory(factory.Factory):
     class Meta:
@@ -31,7 +31,7 @@ class sponsor3Factory(factory.Factory):
     personType = "J"
     contact_number="3207258863"
     email = "argC@gmail.com"
-    previousColab = "True"
+    previousColab = "si"
 
 class event1Factory(factory.Factory):
     class Meta:
