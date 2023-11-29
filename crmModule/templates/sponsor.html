@@ -12,28 +12,32 @@
 </head>
 <body>
     
-
-    
 {% block content %}
 <div>
-<br>
-<div class="container_sponsor_register">
-
-<p><a link href="{% url 'menu' %}">Inicio</a> | <a link href="{% url 'sponsor' %}">Filántropos</a></p>
-
-<hr>
-<br>
+    <br>
+    <div class="container_sponsor_register">
+        <p><a link href="{% url 'menu' %}">Inicio</a> | <a link href="{% url 'sponsor' %}">Filántropos</a></p>
+        <hr>
+        <br>
+    </div>
+    <br>
+    <div class="button_sponsor text-center"> <!-- Aplicar la clase text-center aquí -->
+        <a link href="{% url 'register_sponsor' %}" class="btn">REGISTRAR FILÁNTROPO</a>
+        <a link href="{% url 'homereg' %}" class="btn">EXPLORAR FILÁNTROPOS</a>
+    </div>
+    <br>
+    <div class="text-center"> <!-- Aplicar la clase text-center aquí -->
+        <a href="{% url 'downloadSponsor' %}" class="button">Descargar Archivo</a>
+        <form action="{% url 'loadSponsors' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="file" name="SponsorData" accept=".xlsx">
+            </div>
+            <button type="submit" class="btn btn-primary">Subir</button>
+        </form>
+    </div>
 </div>
-<br>
-<div class="button_sponsor">
-    <a link href="{% url 'register_sponsor' %}" class="btn">REGISTRAR FILÁNTROPO</a>
-    <a link href="{% url 'homereg' %}" class="btn">EXPLORAR FILÁNTROPOS</a>
-</div>
-
-
 {% endblock %}
 
 </body>
 </html>
-
-

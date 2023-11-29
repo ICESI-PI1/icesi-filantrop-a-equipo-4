@@ -27,6 +27,18 @@
     <a link href="{% url 'register_event' %}" class="btn">REGISTRAR EVENTO</a>
     <a link href="{% url 'show_events' %}" class="btn">EXPLORAR EVENTOS</a>
 </div>
+<br>
+<div>
+    <a href="{% url 'downloadEvent' %}" class="button">Descargar Archivo</a>
+    <form action="{% url 'loadEvents' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+            <div class="form-group">
+                <input type="file" name="EventData" accept=".xlsx">
+            </div>
+            <button type="submit" class="btn btn-primary">Subir</button>
+    </form>
+</div>
+
 
 
 {% endblock %}

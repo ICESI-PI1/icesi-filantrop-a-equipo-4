@@ -6,35 +6,45 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <script>
+        function confirmDelete() {
+            return confirm("¿Estás seguro de que quieres eliminar este sponsor?");
+        }
+    </script>
 </head>
 <body>
 
 {% block content %}
 <div class="container_sponsor_register">
-
-    <p><a link href="{% url 'menu' %}">Inicio</a> | <a link href="{% url 'sponsor' %}">Filántropos</a> | <a link href="{% url 'homereg' %}">Explorar</a> |<a link href="">Visualizar</a>  </p>
+    <p><a link href="{% url 'menu' %}">Inicio</a> | <a link href="{% url 'sponsor' %}">Filántropos</a> | <a link href="{% url 'homereg' %}">Explorar</a> |<a link href="">Visualizar</a></p>
     <hr>
     <br>
-    </div>
+</div>
+
 <h1><b>INFORMACIÓN DEL SPONSOR</b></h1>
 <p><b>NOMBRE:</b> {{ sponsor.name }}</p>
 <p><b>TIPO DE PERSONA:</b> {{ sponsor.personType }}</p>
 <p><b>TELÉFONO DE CONTACTO:</b> {{ sponsor.contact_number }}</p>
 <p><b>EMAIL:</b> {{ sponsor.email }}</p>
 <p><b>COLABORACIÓN PREVIA:</b> {{ sponsor.previousColab }}</p>
+
 <div>
-<form action="{% url 'update_sponsor' sponsor.id %}" >
-    {% csrf_token %}
-    <div class="btn-group" role="group" method="GET">
-        <button  class="btn btn-primary" type="submit" style="border: 3px solid #000000;">ACTUALIZAR</button>
-    </div>
-</form>
-<br>
-<form action="{% url 'delete_sponsor' sponsor.id %}" method="POST">
-    {% csrf_token %}
-    <button class="btn btn-danger" type="submit" style="border: 3px solid #000000;">ELIMINAR</button>
-</form>
+    <form action="{% url 'update_sponsor' sponsor.id %}" method="GET">
+        {% csrf_token %}
+        <div class="btn-group" role="group">
+            <button class="btn btn-primary" type="submit" style="border: 3px solid #000000;">ACTUALIZAR</button>
+        </div>
+    </form>
+    
+    <br>
+    
+    <form action="{% url 'delete_sponsor' sponsor.id %}" method="POST" onsubmit="return confirmDelete()">
+        {% csrf_token %}
+        <button class="btn btn-danger" type="submit" style="border: 3px solid #000000;">ELIMINAR</button>
+    </form>
 </div>
+
 {% endblock %}
 </body>
 </html>

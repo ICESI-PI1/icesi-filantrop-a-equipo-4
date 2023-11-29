@@ -7,7 +7,8 @@ from ..models import Sponsor
 def sponsor(request):
     sponsors=Sponsor.objects.all()
     return render (request, 'sponsor.html',{
-        'sponsors':sponsors
+        'sponsors':sponsors,
+        'template':'sponsor.html'
     })
     
 @login_required

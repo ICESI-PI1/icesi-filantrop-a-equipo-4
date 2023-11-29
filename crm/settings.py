@@ -127,6 +127,9 @@ import os
 FILES_URL = 'agreements_pdf'
 FILES_ROOT = os.path.join(BASE_DIR, "agreements_pdf")
 
+FILES_EXCEL_DATA_DIR = os.path.join(BASE_DIR,'excelDatos')
+FILES_EXCEL_DATA_FORMAT = os.path.join(BASE_DIR, 'excelFormat')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 

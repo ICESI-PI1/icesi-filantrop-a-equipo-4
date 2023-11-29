@@ -12,7 +12,8 @@ from django.contrib.auth.decorators import login_required
 def event(request):
     events = Event.objects.all()
     return render (request, 'event.html',{
-        'events':events
+        'events':events,
+        'template':'event.html'
     })
 
 
@@ -96,19 +97,6 @@ def event_detail(request, event_id):
             'template':'event_detail.html',
             'sponsor_details': sponsor_details,  # Pasa los detalles de los patrocinadores a la plantilla
         })
-    else:
-       try: 
-        event=get_object_or_404(Event,pk=event_id)
-        form =EventForm(request.POST, instance=event)
-        form.save()
-        return redirect('event')
-       except:
-            return render(request, 'event_detail.html',
-                    {
-                        'event':event,
-                        'form':form,
-                        'error': "Error updating event"
-                    }) 
             
 @login_required
 def update_event(request, event_id):

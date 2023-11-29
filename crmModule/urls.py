@@ -1,6 +1,6 @@
 
 from django.urls import path, include
-from .views import user_views, views, sponsor, event, getInformation
+from .views import user_views, views, sponsor, event, getInformation, loadData
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -26,6 +26,13 @@ urlpatterns = [
     path('event/l/', event.show_events, name='show_events'),
     path('event/<int:event_id>/update', event.update_event,name='update_event'),
     path('agreement/<int:agreement_id>/agreements_pdf/<str:pdf_filename>/', getInformation.agreement, name='agreement_pdf'),
+    path('sponsor/loadSponsors',loadData.loadSponsors, name='loadSponsors'),
+    path('official/loadOfficials',loadData.loadOfficial, name='loadOfficials'),
+    path('event/loadEvents',loadData.loadEvents, name='loadEvents'),
+    path('loadReports', loadData.loadReports, name='loadReports'),
+    path('event/downloadFormat', loadData.download_event_data, name='downloadEvent'),
+    path('sponsor/downloadFormat', loadData.download_sponsor_data, name='downloadSponsor'),
+    path('event/downloadFormat', loadData.download_official_data, name='downloadOfficial'),
 
 
 ]

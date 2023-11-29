@@ -19,7 +19,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12 col-lg-6 col-xl-6"> 
             <h2 class="text-center mb-4">{{ selected_sponsor.name }}</h2>
-            <form action="{% url 'agreement' sponsor_id=selected_sponsor.id %}" method="POST" enctype="multipart/form-data">
+            <form id="uploadForm" action="" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="uploadedFile" class="form-label">Elige el archivo:</label>
@@ -65,5 +65,6 @@
         </div>
     </div>
 </div>
+
 
 {% endblock %}
